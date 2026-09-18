@@ -68,7 +68,7 @@ Writes to the standard output the command line options required to compile
 files that use PCRE2's POSIX API wrapper library (this may include some
 `-I` options, but is blank on many systems).
 
-== See Also
+== See also
 
 `pcre2(3)`
 

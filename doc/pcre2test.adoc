@@ -39,7 +39,7 @@ part of PCRE2. All the modifiers are documented here, some without much
 justification, but many of them are unlikely to be of use except when testing
 the libraries.
 
-== PCRE2's 8-BIT, 16-BIT AND 32-BIT LIBRARIES
+== PCRE2's 8-bit, 16-bit and 32-bit libraries
 
 Different versions of the PCRE2 library can be built to support character
 strings that are encoded in 8-bit, 16-bit, or 32-bit code units. One, two, or
@@ -54,7 +54,7 @@ In the rest of this document, the names of library functions and structures
 are given in generic form, for example, `pcre2_compile()`. The actual
 names used in the libraries have a suffix _8, _16, or _32, as appropriate.
 
-== Input Encoding
+== Input encoding
 
 Input to `pcre2test` is processed line by line, either by calling the C
 library's `fgets()` function, or via the `libreadline` or `libedit`
@@ -96,7 +96,7 @@ character is preceded by the byte 0xff (which is an invalid byte in UTF-8)
 0x80000000 is added to the character's value. For subject strings, using an
 escape sequence is preferable.
 
-== Command Line Options
+== Command line options
 
 `-8`::
 If the 8-bit library has been built, this option causes it to be used (this is
@@ -333,7 +333,7 @@ An empty line or the end of the file signals the end of the subject lines for a
 test, at which point a new pattern or command line is expected if there is
 still input to be read.
 
-== Command Lines
+== Command lines
 
 In between sets of test data, a line that begins with # is interpreted as a
 command line. If the first character is followed by white space or an
@@ -481,7 +481,7 @@ and not printed. The CONDITION can be any of the conditions which are tested by
 the "-C" commandline option and which set pcre2test's exit code to a boolean
 value. The CONDITION may also be preceded by "!".
 
-== Modifier Syntax
+== Modifier syntax
 
 Modifier lists are used with both pattern and subject lines. Items in a list
 are separated by commas followed by optional white space. Trailing white space
@@ -507,7 +507,7 @@ sequence of these abbreviations. For example:
 This is a pattern line whose modifier list starts with two one-letter modifiers
 (/i and /g). The lower-case abbreviated modifiers are the same as used in Perl.
 
-== Pattern Syntax
+== Pattern syntax
 
 A pattern line must start with one of the following characters (common symbols,
 excluding pattern meta-characters):
@@ -553,7 +553,7 @@ pcre2test to read the next line as a continuation of the regular expression.
 
 A pattern can be followed by a modifier list (details below).
 
-== Subject Line Syntax
+== Subject line syntax
 
 Before each subject line is passed to `pcre2_match()`,
 `pcre2_dfa_match()`, or `pcre2_jit_match()`, leading and trailing white
@@ -651,7 +651,7 @@ that follow are treated as literals, with no special treatment of backslashes.
 No replication is possible, and any subject modifiers must be set as defaults
 by a `#subject` command.
 
-== Pattern Modifiers
+== Pattern modifiers
 
 There are several types of modifier that can appear in pattern lines. Except
 where noted below, they may also be used in `#pattern` commands. A
@@ -871,14 +871,14 @@ the pattern. A list of them is output at the end of any other information that
 is requested. For each callout, either its number or string is given, followed
 by the item that follows it in the pattern.
 
-=== Passing a NULL context
+=== Passing a null context
 
 Normally, `pcre2test` passes a context block to `pcre2_compile()`. If
 the `null_context` modifier is set, however, NULL is passed. This is for
 testing that `pcre2_compile()` behaves correctly in this case (it uses
 default values).
 
-=== Passing a NULL pattern
+=== Passing a null pattern
 
 The `null_pattern` modifier is for testing the behaviour of
 `pcre2_compile()` when the pattern argument is NULL. The length value
@@ -1267,7 +1267,7 @@ The `convert_glob_escape` and `convert_glob_separator` modifiers can be
 used to specify the escape and separator characters for glob processing,
 overriding the defaults, which are operating-system dependent.
 
-== Subject Modifiers
+== Subject modifiers
 
 The modifiers that can appear in subject lines and the `#subject`
 command are of two types.
@@ -1727,7 +1727,7 @@ overall amount of computing resource that is used.
 For both kinds of matching, the _heap_limit_ number, which is in kibibytes
 (units of 1024 bytes), limits the amount of heap memory used for matching.
 
-=== Showing MARK names
+=== Showing mark names
 
 The `mark` modifier causes the names from backtracking control verbs that
 are returned from calls to `pcre2_match()` to be displayed. If a mark is
@@ -1800,7 +1800,7 @@ this modifier is ignored, with a warning.
 When testing `pcre2_substitute()`, this modifier also has the effect of
 passing the replacement string as zero-terminated.
 
-=== Passing a NULL context, subject, or replacement
+=== Passing a null context, subject, or replacement
 
 Normally, `pcre2test` passes a context block to `pcre2_match()`,
 `pcre2_dfa_match()`, `pcre2_jit_match()` or `pcre2_substitute()`.
@@ -1814,7 +1814,7 @@ Similarly, for testing purposes, if the `null_subject` or
 `null_replacement` modifier is set, the subject or replacement string
 pointers are passed as NULL, respectively, to the relevant functions.
 
-== The Alternative Matching Function
+== The alternative matching function
 
 By default, `pcre2test` uses the standard PCRE2 matching function,
 `pcre2_match()` to match each subject line. PCRE2 also supports an
@@ -1829,7 +1829,7 @@ This function finds all possible matches at a given point in the subject. If,
 however, the `dfa_shortest` modifier is set, processing stops after the
 first match is found. This is always the shortest possible match.
 
-== DEFAULT OUTPUT FROM pcre2test
+== Default output from pcre2test
 
 This section describes the output when the normal matching function,
 `pcre2_match()`, is being used.
@@ -1927,7 +1927,7 @@ prompt is used for continuations), subject lines may not. However newlines can
 be included in a subject by means of the \n escape (or \r, \r\n, etc.,
 depending on the newline sequence setting).
 
-== Output From The Alternative Matching Function
+== Output from the alternative matching function
 
 When the alternative matching function, `pcre2_dfa_match()`, is used, the
 output consists of a list of all the matches that start at the first point in
@@ -1968,7 +1968,7 @@ data> yellow tangerine and tangy sultana\=dfa
 The alternative matching function does not support substring capture, so the
 modifiers that are concerned with captured substrings are not relevant.
 
-== Restarting After A Partial Match
+== Restarting after a partial match
 
 When the alternative matching function has given the PCRE2_ERROR_PARTIAL
 return, indicating that the subject partially matched the pattern, you can
@@ -2168,7 +2168,7 @@ the
 xref:pcre2callout.adoc[`pcre2callout`]
 documentation.
 
-== Non-Printing Characters
+== Non-printing characters
 
 When `pcre2test` is outputting text in the compiled version of a pattern,
 bytes other than 32-126 are always treated as non-printing characters and are
@@ -2180,7 +2180,7 @@ the pattern (using the `locale` modifier). In this case, the
 `isprint()` function is used to distinguish printing and non-printing
 characters.
 
-== Saving And Restoring Compiled Patterns
+== Saving and restoring compiled patterns
 
 It is possible to save compiled patterns on disc or elsewhere, and reload them
 later, subject to a number of restrictions. JIT data cannot be saved. The host
@@ -2265,7 +2265,7 @@ The #popcopy command is analogous to the `pushcopy` modifier in that it
 makes current a copy of the topmost stack pattern, leaving the original still
 on the stack.
 
-== See Also
+== See also
 
 `pcre2`(3), `pcre2api`(3), `pcre2callout`(3),
 `pcre2jit`, `pcre2matching`(3), `pcre2partial`(d),

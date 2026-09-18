@@ -8,7 +8,7 @@
 :docdate: 27 November 2024
 :revdate: 27 November 2024
 
-== Unicode And Utf Support
+== Unicode and UTF support
 
 PCRE2 is normally built with Unicode support, though if you do not need it, you
 can build it without, in which case the library will be smaller. With Unicode
@@ -35,7 +35,7 @@ it are treated as UTF strings instead of strings of individual one-code-unit
 characters. There are also some other changes to the way characters are
 handled, as documented below.
 
-== Unicode Property Support
+== Unicode property support
 
 When PCRE2 is built with Unicode support, the escape sequences [.regex]`\p{..}`,
 [.regex]`\P{..}`, and [.regex]`\X` can be used. This is not dependent on the const:PCRE2_UTF setting.
@@ -54,7 +54,7 @@ For example, [.regex]`\p{L}` matches a letter. Its longer synonym, [.regex]`\p{L
 supported. Furthermore, in Perl, many properties may optionally be prefixed by
 "Is", for compatibility with Perl 5.6. PCRE2 does not support this.
 
-== Wide Characters And Utf Modes
+== Wide characters and UTF modes
 
 Code points less than 256 can be specified in patterns by either braced or
 unbraced hexadecimal escape sequences (for example, [.regex]`\x{b3}` or [.regex]`\xb3`). Larger
@@ -115,7 +115,7 @@ In contrast to the character escapes and character classes, the special
 horizontal and vertical white space escapes ([.regex]`\h`, [.regex]`\H`, [.regex]`\v`, and [.regex]`\V`) do match
 all the appropriate Unicode characters, whether or not const:PCRE2_UCP is set.
 
-== Unicode Case-Equivalence
+== Unicode case-equivalence
 
 If either const:PCRE2_UTF or const:PCRE2_UCP is set, upper/lower case processing makes use
 of Unicode properties except for characters whose code points are less than 128
@@ -167,7 +167,7 @@ From release 10.45 the Unicode letter properties Lu (upper case), Ll (lower
 case), and Lt (title case) are all treated as Lc (cased letter) when caseless
 matching is set by the const:PCRE2_CASELESS option or [.regex]`(?i)` within the pattern.
 
-== Script Runs
+== Script runs
 
 The pattern constructs [.regex]`(*script_run:...)` and [.regex]`(*atomic_script_run:...)`, with
 synonyms [.regex]`(*sr:...)` and [.regex]`(*asr:...)`, verify that the string matched within the
@@ -263,7 +263,7 @@ digits. In addition to the script checking described above, if a script run
 contains any decimal digits, they must all come from the same set of 10
 adjacent characters.
 
-== Validity Of Utf Strings
+== Validity of UTF strings
 
 When the const:PCRE2_UTF option is set, the strings passed as patterns and subjects
 are (by default) checked for validity on entry to the relevant functions. If an
@@ -407,7 +407,7 @@ const:PCRE2_ERROR_UTF32_ERR1::
 const:PCRE2_ERROR_UTF32_ERR2::
   Code point is greater than [.c]`0x10ffff`
 
-== Matching In Invalid Utf Strings
+== Matching in invalid UTF strings
 
 You can run pattern matches on subject strings that may contain invalid UTF
 sequences if you call func:pcre2_compile() with the const:PCRE2_MATCH_INVALID_UTF

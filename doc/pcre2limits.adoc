@@ -8,7 +8,7 @@
 :docdate: 03 September 2025
 :revdate: 03 September 2025
 
-== Size And Other Limitations
+== Size and other limitations
 
 There are some size limitations in PCRE2 but it is hoped that they will never
 in practice be relevant.

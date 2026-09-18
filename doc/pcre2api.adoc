@@ -17,7 +17,7 @@ description of all its native functions. See the
 xref:pcre2.adoc[`pcre2`]
 document for an overview of all the PCRE2 documentation.
 
-== Pcre2 Native Api Basic Functions
+== PCRE2 native API basic functions
 
 [source]
 ----
@@ -48,7 +48,7 @@ int pcre2_dfa_match(const pcre2_code *code, PCRE2_SPTR subject,
 void pcre2_match_data_free(pcre2_match_data *match_data);
 ----
 
-== Pcre2 Native Api Auxiliary Match Functions
+== PCRE2 native API auxiliary match functions
 
 [source]
 ----
@@ -66,7 +66,7 @@ PCRE2_SIZE *pcre2_get_ovector_pointer(pcre2_match_data *match_data);
 PCRE2_SIZE pcre2_get_startchar(pcre2_match_data *match_data);
 ----
 
-== Pcre2 Native Api General Context Functions
+== PCRE2 native API general context functions
 
 [source]
 ----
@@ -81,7 +81,7 @@ pcre2_general_context *pcre2_general_context_copy(
 void pcre2_general_context_free(pcre2_general_context *gcontext);
 ----
 
-== Pcre2 Native Api Compile Context Functions
+== PCRE2 native API compile context functions
 
 [source]
 ----
@@ -136,7 +136,7 @@ int pcre2_set_optimize(pcre2_compile_context *ccontext,
                        uint32_t directive);
 ----
 
-== Pcre2 Native Api Match Context Functions
+== PCRE2 native API match context functions
 
 [source]
 ----
@@ -194,7 +194,7 @@ int pcre2_set_depth_limit(pcre2_match_context *mcontext,
                           uint32_t limit);
 ----
 
-== Pcre2 Native Api String Extraction Functions
+== PCRE2 native API string extraction functions
 
 [source]
 ----
@@ -243,7 +243,7 @@ int pcre2_substring_list_get(pcre2_match_data *match_data,
                              PCRE2_SIZE **lengthsptr);
 ----
 
-== Pcre2 Native Api String Substitution Function
+== PCRE2 native API string substitution function
 
 [source]
 ----
@@ -255,7 +255,7 @@ int pcre2_substitute(const pcre2_code *code, PCRE2_SPTR subject,
                      PCRE2_UCHAR *buffer, PCRE2_SIZE *blength);
 ----
 
-== Pcre2 Native Api Jit Functions
+== PCRE2 native API JIT functions
 
 [source]
 ----
@@ -279,7 +279,7 @@ void pcre2_jit_stack_assign(pcre2_match_context *mcontext,
 void pcre2_jit_stack_free(pcre2_jit_stack *jit_stack);
 ----
 
-== Pcre2 Native Api Serialization Functions
+== PCRE2 native API serialization functions
 
 [source]
 ----
@@ -299,7 +299,7 @@ void pcre2_serialize_free(uint8_t *bytes);
 int32_t pcre2_serialize_get_number_of_codes(const uint8_t *bytes);
 ----
 
-== Pcre2 Native Api Auxiliary Functions
+== PCRE2 native API auxiliary functions
 
 [source]
 ----
@@ -327,7 +327,7 @@ int pcre2_callout_enumerate(
 int pcre2_config(uint32_t what, void *where);
 ----
 
-== Pcre2 Native Api Obsolete Functions
+== PCRE2 native API obsolete functions
 
 [source]
 ----
@@ -346,7 +346,7 @@ backward compatibility. They should not be used in new code. The first is
 replaced by `pcre2_set_depth_limit()`; the second is no longer needed and
 has no effect (it always returns zero).
 
-== Pcre2 Experimental Pattern Conversion Functions
+== PCRE2 experimental pattern conversion functions
 
 [source]
 ----
@@ -379,7 +379,7 @@ POSIX basic and extended patterns can be converted. Details are given in the
 xref:pcre2convert.adoc[`pcre2convert`]
 documentation.
 
-== Pcre2 8-Bit, 16-Bit, And 32-Bit Libraries
+== PCRE2 8-bit, 16-bit, and 32-bit libraries
 
 There are three PCRE2 libraries, supporting 8-bit, 16-bit, and 32-bit code
 units, respectively. However, there is just one header file, `pcre2.h`.
@@ -443,7 +443,7 @@ In the function summaries above, and in the rest of this document and other
 PCRE2 documents, functions and data types are described using their generic
 names, without the _8, _16, or _32 suffix.
 
-== Pcre2 Api Overview
+== PCRE2 API overview
 
 PCRE2 has its own native API, which is described in this document. There are
 also some wrapper functions for the 8-bit library that correspond to the
@@ -543,7 +543,7 @@ Functions with names ending with `_free()` are used for freeing memory
 blocks of various sorts. In all cases, if one of these functions is called with
 a NULL argument, it does nothing.
 
-== String Lengths And Offsets
+== String lengths and offsets
 
 The PCRE2 API uses string lengths and offsets into strings of code units in
 several places. These values are always of type PCRE2_SIZE, which is an
@@ -691,7 +691,7 @@ match. This includes details of what was matched, as well as additional
 information such as the name of a (pass:[*]MARK) setting. Each thread must provide its
 own copy of this memory.
 
-== Pcre2 Contexts
+== PCRE2 contexts
 
 Some PCRE2 functions have a lot of parameters, many of which are used only by
 specialist applications, for example, those that use custom memory management
@@ -1333,7 +1333,7 @@ where ddd is a decimal number. However, such a setting is ignored unless ddd is
 less than the limit set by the caller of `pcre2_match()` or
 `pcre2_dfa_match()` or, if no such limit is set, less than the default.
 
-== Checking Build-Time Options
+== Checking build-time options
 
 int pcre2_config(uint32_t _what_, void pass:[*]_where_);
 
@@ -1563,7 +1563,7 @@ buffer is filled with the PCRE2 version string, zero-terminated. The number of
 code units used is returned. This is the length of the string plus one unit for
 the terminating zero.
 
-== Compiling A Pattern
+== Compiling a pattern
 
 [source]
 ----
@@ -2471,7 +2471,7 @@ a pattern by the (pass:[*]TURKISH_CASING) start-of-pattern setting. Either the U
 UCP options must be set. In the 8-bit library, UTF must be set. This option
 cannot be combined with PCRE2_EXTRA_CASELESS_RESTRICT.
 
-== Just-In-Time (Jit) Compilation
+== Just-in-time (JIT) compilation
 
 [source]
 ----
@@ -2507,7 +2507,7 @@ patterns to be analyzed, and for one-off matches and simple patterns the
 benefit of faster execution might be offset by a much slower compilation time.
 Most (but not all) patterns can be optimized by the JIT compiler.
 
-== Locale Support
+== Locale support
 
 [source]
 ----
@@ -2597,7 +2597,7 @@ a set of binary tables. See the
 `pcre2build`
 documentation for details.
 
-== Information About A Compiled Pattern
+== Information about a compiled pattern
 
 [source]
 ----
@@ -3021,7 +3021,7 @@ value returned by this option, because there are cases where the code that
 calculates the size has to over-estimate. Processing a pattern with the JIT
 compiler does not alter the value returned by this option.
 
-== Information About A Pattern's Callouts
+== Information about a pattern's callouts
 
 [source]
 ----
@@ -3044,7 +3044,7 @@ contents of the callout enumeration block are described in the
 xref:pcre2callout.adoc[`pcre2callout`]
 documentation, which also gives further details about callouts.
 
-== Serialization And Precompiling
+== Serialization and precompiling
 
 It is possible to save compiled patterns on disc or elsewhere, and reload them
 later, subject to a number of restrictions. The host on which the patterns are
@@ -3058,7 +3058,7 @@ xref:pcre2serialize.adoc[`pcre2serialize`]
 documentation. Note that PCRE2 serialization does not convert compiled patterns
 to an abstract format like Java or .NET serialization.
 
-== The Match Data Block
+== The match data block
 
 [source]
 ----
@@ -3138,7 +3138,7 @@ When a match data block itself is no longer needed, it should be freed by
 calling `pcre2_match_data_free()`. If this function is called with a NULL
 argument, it returns immediately, without doing anything.
 
-== Memory Use For Match Data Blocks
+== Memory use for match data blocks
 
 [source]
 ----
@@ -3173,7 +3173,7 @@ of frames and thus a large vector; applications that run in environments where
 memory is constrained can check this and free the match data block if the heap
 frames vector has become too big.
 
-== Matching A Pattern: The Traditional Function
+== Matching a pattern: the traditional function
 
 [source]
 ----
@@ -3481,7 +3481,7 @@ examples, in the
 xref:pcre2partial.adoc[`pcre2partial`]
 documentation.
 
-== Newline Handling When Matching
+== Newline handling when matching
 
 When PCRE2 is built, a default newline convention is set; this is usually the
 standard convention for the operating system. The default can be overridden in
@@ -3517,7 +3517,7 @@ does \s, even though it includes CR and LF in the characters that it matches.
 Notwithstanding the above, anomalous effects may still occur when CRLF is a
 valid newline sequence and explicit \r or \n escapes appear in the pattern.
 
-== How Pcre2_Match() Returns A String And Captured Substrings
+== How pcre2_match() returns a string and captured substrings
 
 [source]
 ----
@@ -3604,7 +3604,7 @@ parentheses, no more than _ovector[0]_ to _ovector[2npass:[+]1]_ are set by
 `pcre2_match()`. The other elements retain whatever values they previously
 had. After a failed match attempt, the contents of the ovector are unchanged.
 
-== Other Information About A Match
+== Other information about a match
 
 [source]
 ----
@@ -3666,7 +3666,7 @@ the code unit offset of the invalid UTF character. Details are given in the
 xref:pcre2unicode.adoc[`pcre2unicode`]
 page.
 
-== ERROR RETURNS FROM `pcre2_match()`
+== Error returns from `pcre2_match()`
 
 If `pcre2_match()` fails, it returns a negative number. This can be
 converted to a text string by calling the `pcre2_get_error_message()`
@@ -3821,7 +3821,7 @@ detected and faulted at compile time, but more complicated cases, in particular
 mutual recursions between two different groups, cannot be detected until
 matching is attempted.
 
-== Obtaining A Textual Error Message
+== Obtaining a textual error message
 
 [source]
 ----
@@ -3843,7 +3843,7 @@ returned. If the buffer is too small, the message is truncated (but still with
 a trailing zero), and the negative error code PCRE2_ERROR_NOMEMORY is returned.
 None of the messages is very long; a buffer size of 120 code units is ample.
 
-== Iterating Over All Matches
+== Iterating over all matches
 
 [source]
 ----
@@ -3932,7 +3932,7 @@ not even be sorted by ovector[0]. Additionally, each match itself can end before
 it starts (ovector[1] < ovector[0]). We recommend that applications do not set
 PCRE2_EXTRA_ALLOW_LOOKAROUND_BSK.
 
-== Extracting Captured Substrings By Number
+== Extracting captured substrings by number
 
 [source]
 ----
@@ -4037,7 +4037,7 @@ The substring did not participate in the match. For example, if the pattern is
 (abc)|(def) and the subject is "def", and the ovector contains at least two
 capturing slots, substring number 1 is unset.
 
-== Extracting A List Of All Captured Substrings
+== Extracting a list of all captured substrings
 
 [source]
 ----
@@ -4075,7 +4075,7 @@ distinguished from a genuine zero-length substring by inspecting the
 appropriate offset in the ovector, which contain PCRE2_UNSET for unset
 substrings, or by calling `pcre2_substring_length_bynumber()`.
 
-== Extracting Captured Substrings By Name
+== Extracting captured substrings by name
 
 [source]
 ----
@@ -4138,7 +4138,7 @@ names are not included in the compiled code. The matching process uses only
 numbers. For this reason, the use of different names for groups with the
 same number causes an error at compile time.
 
-== Creating A New String With Substitutions
+== Creating a new string with substitutions
 
 [source]
 ----
@@ -4663,7 +4663,7 @@ second call is not guaranteed to succeed either, if the case callout requires
 more buffer space than expected. The caller must make repeated attempts in a
 loop.
 
-== Duplicate Capture Group Names
+== Duplicate capture group names
 
 [source]
 ----
@@ -4708,7 +4708,7 @@ in the section entitled _Information about a pattern_. Given all the
 relevant entries for the name, you can extract each of their numbers, and hence
 the captured data.
 
-== Finding All Possible Matches At One Position
+== Finding all possible matches at one position
 
 The traditional matching function uses a similar algorithm to Perl, which stops
 when it finds the first match at a given point in the subject. If you want to
@@ -4725,7 +4725,7 @@ substring. Then return 1, which forces `pcre2_match()` to backtrack and try
 other alternatives. Ultimately, when it runs out of matches,
 `pcre2_match()` will yield PCRE2_ERROR_NOMATCH.
 
-== Matching A Pattern: The Alternative Function
+== Matching a pattern: the alternative function
 
 [source]
 ----
@@ -4946,7 +4946,7 @@ some plausibility checks are made on the contents of the workspace, which
 should contain data about the previous partial match. If any of these checks
 fail, this error is given.
 
-== See Also
+== See also
 
 `pcre2build`(3), `pcre2callout`(3), `pcre2demo(3)`,
 `pcre2matching`(3), `pcre2partial`(3), `pcre2posix`(3),

@@ -8,13 +8,13 @@
 :docdate: 06 December 2022
 :revdate: 06 December 2022
 
-== Pcre2 Performance
+== PCRE2 performance
 
 Two aspects of performance are discussed below: memory usage and processing
 time. The way you express your pattern as a regular expression can affect both
 of them.
 
-== Compiled Pattern Memory Usage
+== Compiled pattern memory usage
 
 Patterns are compiled by PCRE2 into a reasonably efficient interpretive code,
 so that most simple patterns do not use much memory for storing the compiled
@@ -75,7 +75,7 @@ cannot otherwise handle. The matching performance of the two different versions
 of the pattern are roughly the same. (This applies from release 10.30 - things
 were different in earlier releases.)
 
-== Stack And Heap Usage At Run Time
+== Stack and heap usage at run time
 
 From release 10.30, the interpretive (non-JIT) version of `pcre2_match()`
 uses very little system stack at run time. In earlier releases recursive
@@ -117,7 +117,7 @@ The "match depth" parameter can be used to limit the depth of function
 recursion, and the "match heap" parameter to limit heap memory in
 `pcre2_dfa_match()`.
 
-== Processing Time
+== Processing time
 
 Certain items in regular expression patterns are processed more efficiently
 than others. It is more efficient to use a character class like [aeiou] than a
@@ -241,7 +241,7 @@ This example shows that one way of optimizing performance when matching long
 subject strings is to write repeated parenthesized subpatterns to match more
 than one character whenever possible.
 
-=== Setting Resource Limits
+=== Setting resource limits
 
 You can set limits on the amount of processing that takes place when matching,
 and on the amount of heap memory that is used. The default values of the limits

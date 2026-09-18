@@ -105,7 +105,7 @@ When any callouts are present, the output from `pcre2test` indicates how
 the pattern is being matched. This is useful information when you are trying to
 optimize the performance of a particular pattern.
 
-== Missing Callouts
+== Missing callouts
 
 You should be aware that, because of optimizations in the way PCRE2 compiles
 and matches patterns, callouts sometimes do not happen exactly as you might
@@ -221,7 +221,7 @@ option to `pcre2_compile()`, or by starting the pattern with
 (pass:[*]NO_START_OPT). This slows down the matching process, but does ensure that
 callouts such as the example above are obeyed.
 
-== The Callout Interface
+== The callout interface
 
 During matching, when PCRE2 reaches a callout point, if an external function is
 provided in the match context, it is called. This applies to both normal,
@@ -398,7 +398,7 @@ because there is no backtracking in DFA matching, and there is no support in
 JIT because JIT is all about maximimizing matching performance. In both these
 cases the `callout_flags` field is always zero.
 
-== Return Values From Callouts
+== Return values from callouts
 
 The external callout function returns an integer to PCRE2. If the value is
 zero, matching proceeds as normal. If the value is greater than zero, matching
@@ -412,7 +412,7 @@ values. In particular, PCRE2_ERROR_NOMATCH forces a standard "no match"
 failure. The error number PCRE2_ERROR_CALLOUT is reserved for use by callout
 functions; it will never be used by PCRE2 itself.
 
-== Callout Enumeration
+== Callout enumeration
 
 [source]
 ----

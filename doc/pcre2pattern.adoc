@@ -8,7 +8,7 @@
 :docdate: 25 October 2025
 :revdate: 25 October 2025
 
-== Pcre2 Regular Expression Details
+== PCRE2 regular expression details
 
 The syntax and semantics of the regular expressions that are supported by PCRE2
 are described in detail below. There is a quick-reference syntax summary in the
@@ -36,7 +36,7 @@ function, are discussed in the
 xref:pcre2matching.adoc[`pcre2matching`]
 page.
 
-== Ebcdic Character Codes
+== EBCDIC character codes
 
 Most computers use ASCII or Unicode for encoding characters, and PCRE2 assumes
 this by default. However, it can be compiled to run in an environment that uses
@@ -48,7 +48,7 @@ an EBCDIC environment are described in the section
 "EBCDIC environments"
 below, which you can ignore unless you really are in an EBCDIC environment.
 
-== Special Start-Of-Pattern Items
+== Special start-of-pattern items
 
 A number of options that can be passed to `pcre2_compile()` can also be set
 by special items at the start of a pattern. These are not Perl-compatible, but
@@ -235,7 +235,7 @@ at compile time. This effect can also be achieved by starting a pattern with
 (pass:[*]BSR_ANYCRLF). For completeness, (pass:[*]BSR_UNICODE) is also recognized,
 corresponding to PCRE2_BSR_UNICODE.
 
-== Characters And Metacharacters
+== Characters and metacharacters
 
 A regular expression is a pattern that is matched against a subject string from
 left to right. Most characters stand for themselves in a pattern, and match the
@@ -517,7 +517,7 @@ Note that octal values of 100 or greater that are specified using this syntax
 must not be introduced by a leading zero, because no more than three octal
 digits are ever read.
 
-=== Python rules for non_class backslash 1-9
+=== Python rules for non-class backslash 1-9
 
 If there are at least three octal digits after the backslash, exactly three are
 read as an octal code point number, but the value must be no greater than
@@ -1202,7 +1202,7 @@ If all the alternatives of a pattern begin with \G, the expression is anchored
 to the starting match position, and the "anchored" flag is set in the compiled
 regular expression.
 
-== Circumflex And Dollar
+== Circumflex and dollar
 
 The circumflex and dollar metacharacters are zero-width assertions. That is,
 they test for a particular condition being true without consuming any
@@ -1268,7 +1268,7 @@ Note that the sequences \A, \Z, and \z can be used to match the start and
 end of the subject in both modes, and if all branches of a pattern start with
 \A it is always anchored, whether or not PCRE2_MULTILINE is set.
 
-== Full Stop (Period, Dot) And \N
+== Full stop (period, dot) and \n
 
 Outside a character class, a dot in the pattern matches any one character in
 the subject string except (by default) a character that signifies the end of a
@@ -1302,7 +1302,7 @@ section entitled
 above for details. Perl also uses \N{name} to specify characters by Unicode
 name; PCRE2 does not support this.
 
-== Matching A Single Code Unit
+== Matching a single code unit
 
 Outside a character class, the escape sequence \C matches any one code unit,
 whether or not a UTF mode is set. In the 8-bit library, one code unit is one
@@ -1355,7 +1355,7 @@ character for values whose encoding uses 1, 2, 3, or 4 bytes, respectively. The
 character's individual bytes are then captured by the appropriate number of
 \C groups.
 
-== Square Brackets And Character Classes
+== Square brackets and character classes
 
 An opening square bracket introduces a character class, terminated by a closing
 square bracket. A closing square bracket on its own is not special by default.
@@ -1469,7 +1469,7 @@ below), or a special compatibility feature (see
 below. Escaping any non-alphanumeric character in a class turns it into a
 literal, whether or not it would otherwise be a metacharacter.
 
-== Perl Extended Character Classes
+== Perl extended character classes
 
 From release 10.45 PCRE2 supports Perl's (?[...]) extended character class
 syntax. This can be used to perform set operations such as intersection on
@@ -1504,7 +1504,7 @@ The binary operators are "&" (intersection), "|" or "pass:[+]" (union), "-"
 precedence. The one prefix unary operator is "!" (complement), with highest
 precedence.
 
-== Uts#18 Extended Character Classes
+== UTS#18 extended character classes
 
 The PCRE2_ALT_EXTENDED_CLASS option enables an alternative to Perl's (?[...])
 syntax, allowing instead extended class behaviour inside ordinary [...]
@@ -1566,7 +1566,7 @@ property that they are interpreted either with the same behaviour, or as
 invalid, by all other major engines. Please file an issue if you are aware of
 cross-engine differences in behaviour between PCRE2 and another major engine.
 
-== Posix Character Classes
+== POSIX character classes
 
 Perl supports the POSIX notation for character classes. This uses names
 enclosed by [: and :] within the enclosing square brackets. PCRE2 also supports
@@ -1676,7 +1676,7 @@ just [:digit:] and [:xdigit:]. Within a pattern, this can be set and unset by
 for all POSIX classes, including [:digit:] and [:xdigit:]. Within a pattern,
 (?aP) and (?-aP) set and unset both these options for consistency.
 
-== Compatibility Feature For Word Boundaries
+== Compatibility feature for word boundaries
 
 In the POSIX.2 compliant library that was included in 4.4BSD Unix, the ugly
 syntax [[:<:]] and [[:>:]] is used for matching "start of word" and "end of
@@ -1700,7 +1700,7 @@ used above in order to give exactly the POSIX behaviour. Note also that the
 PCRE2_UCP option changes the meaning of \w (and therefore \b) by default, so
 it also affects these POSIX sequences.
 
-== Vertical Bar
+== Vertical bar
 
 Vertical bar characters are used to separate alternative patterns. For example,
 the pattern
@@ -1718,7 +1718,7 @@ that succeeds is used. If the alternatives are within a group
 "succeeds" means matching the rest of the main pattern as well as the
 alternative in the group.
 
-== Internal Option Setting
+== Internal option setting
 
 The settings of several options can be changed within a pattern by a sequence
 of letters enclosed between "(?" and ")". The following are Perl-compatible,
@@ -1887,7 +1887,7 @@ from left to right, and options are not reset until the end of the group is
 reached, an option setting in one branch does affect subsequent branches, so
 the above patterns match "SUNDAY" as well as "Saturday".
 
-== Duplicate Group Numbers
+== Duplicate group numbers
 
 Perl 5.10 introduced a feature whereby each alternative in a group uses the
 same numbers for its capturing parentheses. Such a group starts with (?| and is
@@ -1943,7 +1943,7 @@ true if any group with that number has matched.
 An alternative approach to using this "branch reset" feature is to use
 duplicate named groups, as described in the next section.
 
-== Named Capture Groups
+== Named capture groups
 
 Identifying capture groups by number is simple, but it can be very hard to keep
 track of the numbers in complicated patterns. Furthermore, if an expression is
@@ -2284,7 +2284,7 @@ captured values may have been set in previous iterations. For example, after
 
 matches "aba" the value of the second captured substring is "b".
 
-== Atomic Grouping And Possessive Quantifiers
+== Atomic grouping and possessive quantifiers
 
 With both maximizing ("greedy") and minimizing ("ungreedy" or "lazy")
 repetition, failure of what follows normally causes the repeated item to be
@@ -2831,7 +2831,7 @@ preceded by "foo", while
 is another pattern that matches "foo" preceded by three digits and any three
 characters that are not "999".
 
-== Non-Atomic Assertions
+== Non-atomic assertions
 
 Traditional lookaround assertions are atomic. That is, if an assertion is true,
 but there is a subsequent matching failure, there is no backtracking into the
@@ -2892,7 +2892,7 @@ that assertions that appear as conditions for
 conditional groups
 (see below) must be atomic.
 
-== Scan Substring Assertions
+== Scan substring assertions
 
 A special kind of assertion, not compatible with Perl, makes it possible to
 check the contents of a captured substring by matching it with a subpattern.
@@ -2960,7 +2960,7 @@ Within a substring scanning subpattern, references to other groups work as
 normal. Capturing groups may appear, and will retain their values during
 ongoing matching if the assertion succeeds.
 
-== Script Runs
+== Script runs
 
 In concept, a script run is a sequence of characters that are all from the same
 Unicode script such as Latin or Greek. However, because some scripts are
@@ -3028,7 +3028,7 @@ parentheses.
 should not be used within a script run group, because it causes an immediate
 exit from the group, bypassing the script run checking.
 
-== Conditional Groups
+== Conditional groups
 
 It is possible to cause the matching process to obey a pattern fragment
 conditionally or to choose between two alternative fragments, depending on
@@ -3267,7 +3267,7 @@ a newline in the pattern. The sequence \n is still literal at this stage, so
 it does not terminate the comment. Only an actual character with the code value
 0x0a (the default newline) does so.
 
-== Recursive Patterns
+== Recursive patterns
 
 Consider the problem of matching a string in parentheses, allowing for
 unlimited nested parentheses. Without the use of recursion, the best that can
@@ -3677,7 +3677,7 @@ example:
 
 The doubling is removed before the string is passed to the callout function.
 
-== Backtracking Control
+== Backtracking control
 
 There are a number of special "Backtracking Control Verbs" (to use Perl's
 terminology) that modify the behaviour of backtracking during matching. They
@@ -4223,7 +4223,7 @@ enclosing group that has alternatives (its normal behaviour). However, if there
 is no such group within the subroutine's group, the subroutine match fails and
 there is a backtrack at the outer level.
 
-== Ebcdic Environments
+== EBCDIC environments
 
 Differences in the way PCRE behaves when it is running in an EBCDIC environment
 are covered in this section.
@@ -4261,7 +4261,7 @@ though the EBCDIC codes for h and k are 0x88 and 0x92, a range of 11 code
 points. However, if the range is specified numerically, for example,
 [\x88-\x92] or [h-\x92], all code points are included.
 
-== See Also
+== See also
 
 `pcre2api`(3), `pcre2callout`(3), `pcre2matching`(3),
 `pcre2syntax`(3), `pcre2`(3).

@@ -8,7 +8,7 @@
 :docdate: 16 August 2026
 :revdate: 16 August 2026
 
-== Partial Matching In Pcre2
+== Partial matching in PCRE2
 
 In normal use of PCRE2, if there is a match up to the end of a subject string,
 but more characters are needed to match the entire pattern, PCRE2_ERROR_NOMATCH
@@ -53,7 +53,7 @@ partially. PCRE2 also remembers a minimum length of a matching string, and does
 not bother to run the matching function on shorter strings. This optimization
 is also disabled for partial matching.
 
-== Requirements For A Partial Match
+== Requirements for a partial match
 
 A possible partial match occurs during matching when the end of the subject
 string is reached successfully, but either more characters are needed to
@@ -92,7 +92,7 @@ which in this case means "there is going to be a match at this point, but until
 some more characters are added, we do not know if it will be an empty string or
 something longer".
 
-== PARTIAL MATCHING USING pcre2_match()
+== Partial matching using pcre2_match()
 
 When a partial matching option is set, the result of calling
 `pcre2_match()` can be one of the following:
@@ -228,7 +228,7 @@ With PCRE2_PARTIAL_SOFT, the subject is matched completely. For
 PCRE2_PARTIAL_HARD, however, the subject is assumed not to be complete, so
 there is only a partial match.
 
-== MULTI-SEGMENT MATCHING WITH pcre2_match()
+== Multi-segment matching with pcre2_match()
 
 PCRE was not originally designed with multi-segment matching in mind. However,
 over time, features (including partial matching) that make multi-segment
@@ -307,7 +307,7 @@ In a non-UTF or a 32-bit case, moving back is just a subtraction, but in
 UTF-8 or UTF-16 you have to count characters while moving back through the code
 units.
 
-== PARTIAL MATCHING USING pcre2_dfa_match()
+== Partial matching using pcre2_dfa_match()
 
 The DFA function moves along the subject string character by character, without
 backtracking, searching for all possible matches simultaneously. If the end of
@@ -334,7 +334,7 @@ Whereas the standard function stops as soon as it finds the complete match for
 "dog", the DFA function also finds the partial match for "dogsbody", and so
 returns that when PCRE2_PARTIAL_HARD is set.
 
-== MULTI-SEGMENT MATCHING WITH pcre2_dfa_match()
+== Multi-segment matching with pcre2_dfa_match()
 
 When a partial match has been found using the DFA matching function, it is
 possible to continue the match by providing additional subject data and calling

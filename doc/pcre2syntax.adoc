@@ -8,7 +8,7 @@
 :docdate: 14 October 2025
 :revdate: 14 October 2025
 
-== Pcre2 Regular Expression Syntax Summary
+== PCRE2 regular expression syntax summary
 
 The full syntax and semantics of the regular expression patterns that are
 supported by PCRE2 are described in the
@@ -33,7 +33,7 @@ that PCRE2's handling of \Q...\E has some differences from Perl's. See the
 xref:pcre2pattern.adoc[`pcre2pattern`]
 documentation for details.
 
-== Braced Items
+== Braced items
 
 With one exception, wherever brace characters { and } are required to enclose
 data for constructions such as \g{2} or \k{name}, space and/or horizontal tab
@@ -43,7 +43,7 @@ is \u{...} which is not Perl-compatible and is recognized only when
 PCRE2_EXTRA_ALT_BSUX is set. This is an ECMAScript compatibility feature, and
 follows ECMAScript's behaviour.
 
-== Escaped Characters
+== Escaped characters
 
 This table applies to ASCII and Unicode environments. An unrecognized escape
 sequence causes an error.
@@ -94,7 +94,7 @@ xref:pcre2pattern.adoc[`pcre2pattern`]
 documentation, where details of escape processing in EBCDIC environments are
 also given.
 
-== Character Types
+== Character types
 
 [literal,subs=normal]
 ....
@@ -136,7 +136,7 @@ underscores, and ASCII white space characters are ignored, in accordance with
 Unicode's "loose matching" rules. For example, \p{Bidi_Class=al} is the same
 as \p{ bidi class = AL }.
 
-== GENERAL CATEGORY PROPERTIES FOR \p and \P
+== General category properties for \p and \P
 
 [literal]
 ....
@@ -208,7 +208,7 @@ Zs         Space separator
 From release 10.45, when caseless matching is set, Ll, Lu, and Lt are all
 equivalent to Lc.
 
-== PCRE2 SPECIAL CATEGORY PROPERTIES FOR \p and \P
+== PCRE2 special category properties for \p and \P
 
 [literal]
 ....
@@ -223,7 +223,7 @@ Xwd        Perl word: property Xan or underscore
 Perl and POSIX space are now the same. Perl added VT to its space character set
 at release 5.18.
 
-== BINARY PROPERTIES FOR \p AND \P
+== Binary properties for \p and \P
 
 Unicode defines a number of binary properties, that is, properties whose only
 values are true or false. You can obtain a list of those that are recognized by
@@ -234,7 +234,7 @@ values are true or false. You can obtain a list of those that are recognized by
 pcre2test -LP
 ....
 
-== SCRIPT MATCHING WITH \p AND \P
+== Script matching with \p and \P
 
 Many script names and their 4-letter abbreviations are recognized in
 \p{sc:...} or \p{scx:...} items, or on their own with \p (and also \P of
@@ -245,7 +245,7 @@ course). You can obtain a list of these scripts by running this command:
 pcre2test -LS
 ....
 
-== THE BIDI_CLASS PROPERTY FOR \p AND \P
+== The Bidi_Class property for \p and \P
 
 [literal]
 ....
@@ -282,7 +282,7 @@ S           segment separator
 WS          white space
 ....
 
-== Character Classes
+== Character classes
 
 [literal]
 ....
@@ -331,7 +331,7 @@ x--y        set difference (AND NOT)
 x~~y        set symmetric difference (XOR)
 ....
 
-== Perl Extended Character Classes
+== Perl extended character classes
 
 [literal]
 ....
@@ -389,7 +389,7 @@ as the first character); outside of a nested class, ^ is the XOR operator.
 {,m}?       zero up to m, lazy
 ....
 
-== Anchors And Simple Assertions
+== Anchors and simple assertions
 
 [literal]
 ....
@@ -408,7 +408,7 @@ $           end of subject
 \G          first matching position in subject
 ....
 
-== Reported Match Point Setting
+== Reported match point setting
 
 [literal]
 ....
@@ -444,7 +444,7 @@ In non-UTF modes, names may contain underscores and ASCII letters and digits;
 in UTF modes, any Unicode letters and Unicode decimal digits are permitted. In
 both cases, a name must not start with a digit.
 
-== Atomic Groups
+== Atomic groups
 
 [literal]
 ....
@@ -459,7 +459,7 @@ both cases, a name must not start with a digit.
 (?#....)        comment (not nestable)
 ....
 
-== Option Setting
+== Option setting
 
 Changes of these options within a group are automatically cancelled at the end
 of the group.
@@ -522,7 +522,7 @@ not increase them. LIMIT_RECURSION is an obsolete synonym for LIMIT_DEPTH. The
 application can lock out the use of (pass:[*]UTF) and (pass:[*]UCP) by setting the
 PCRE2_NEVER_UTF or PCRE2_NEVER_UCP options, respectively, at compile time.
 
-== Newline Convention
+== Newline convention
 
 These are recognized only at the very start of the pattern or after option
 settings with a similar syntax.
@@ -537,7 +537,7 @@ settings with a similar syntax.
 (*NUL)          the NUL character (binary zero)
 ....
 
-== What \R Matches
+== What \R matches
 
 These are recognized only at the very start of the pattern or after option
 setting with a similar syntax.
@@ -548,7 +548,7 @@ setting with a similar syntax.
 (*BSR_UNICODE)  any Unicode newline sequence
 ....
 
-== Lookahead And Lookbehind Assertions
+== Lookahead and lookbehind assertions
 
 [literal]
 ....
@@ -585,7 +585,7 @@ the maximum for each branch is limited to a value set by the caller of
 (ultimate default 255). If every branch matches a fixed number of characters,
 the limit for each branch is 65535 characters.
 
-== Non-Atomic Lookaround Assertions
+== Non-atomic lookaround assertions
 
 These assertions are specific to PCRE2 and are not Perl-compatible.
 
@@ -603,7 +603,7 @@ These assertions are specific to PCRE2 and are not Perl-compatible.
 (*non_atomic_positive_lookbehind:...)  )
 ....
 
-== Substring Scan Assertion
+== Substring scan assertion
 
 This feature is not Perl-compatible.
 
@@ -625,7 +625,7 @@ n       absolute reference
 'name'  name
 ....
 
-== Script Runs
+== Script runs
 
 [literal]
 ....
@@ -657,7 +657,7 @@ n       absolute reference
 (?P=name)       reference by name (Python)
 ....
 
-== Subroutine References (Possibly Recursive)
+== Subroutine references (possibly recursive)
 
 [literal]
 ....
@@ -705,7 +705,7 @@ n       absolute reference
 'name'  name
 ....
 
-== Conditional Patterns
+== Conditional patterns
 
 [literal]
 ....
@@ -736,7 +736,7 @@ condition if the relevant named group exists.
 The parts within brackets for the VERSION conditional syntax could be ommited.
 The fractional part of the version number defaults to 0 in that case.
 
-== Backtracking Control
+== Backtracking control
 
 All backtracking control verbs may be in the form (pass:[*]VERB:NAME). For (pass:[*]MARK) the
 name is mandatory, for the others it is optional. (pass:[*]SKIP) changes its behaviour
@@ -782,7 +782,7 @@ The allowed string delimiters are ` ' " ^ % # $ (which are the same for the
 start and the end), and the starting delimiter { matched with the ending
 delimiter }. To encode the ending delimiter within the string, double it.
 
-== Replacement Strings
+== Replacement strings
 
 If the PCRE2_SUBSTITUTE_LITERAL option is set, a replacement string for
 `pcre2_substitute()` is not interpreted. Otherwise, by default, the only
@@ -836,7 +836,7 @@ ${n:+string1:string2}    values for set/unset group
 The substitution strings themselves are expanded. Backslash can be used to
 escape colons and closing curly brackets.
 
-== See Also
+== See also
 
 `pcre2pattern`(3), `pcre2api`(3), `pcre2callout`(3),
 `pcre2matching`(3), `pcre2`(3).

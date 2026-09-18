@@ -8,7 +8,7 @@
 :docdate: 08 August 2026
 :revdate: 08 August 2026
 
-== Pcre2 Just-In-Time Compiler Support
+== PCRE2 just-in-time compiler support
 
 Just-in-time compiling is a heavyweight optimization that can greatly speed up
 pattern matching. However, it comes at the cost of extra processing before the
@@ -24,7 +24,7 @@ JIT support applies only to the traditional Perl-compatible matching function.
 It does not apply when the DFA matching function is being used. The code for
 JIT support was written by Zoltan Herczeg.
 
-== Availability Of Jit Support
+== Availability of JIT support
 
 JIT support is an optional feature of PCRE2. The "configure" option
 --enable-jit (or equivalent CMake option) must be set when PCRE2 is built if
@@ -72,7 +72,7 @@ that need the best possible performance, there is a
 "fast path"
 API that is JIT-specific.
 
-== Simple Use Of Jit
+== Simple use of JIT
 
 To make use of the JIT support in the simplest way, all you have to do is to
 call `pcre2_jit_compile()` after successfully compiling a pattern with
@@ -144,7 +144,7 @@ pattern. Successful JIT compilation does not, however, guarantee the use of JIT
 at match time because there are some match time options that are not supported
 by JIT.
 
-== Matching Subjects Containing Invalid Utf
+== Matching subjects containing invalid UTF
 
 When a pattern is compiled with the PCRE2_UTF option, subject strings are
 normally expected to be a valid sequence of UTF code units. By default, this is
@@ -169,7 +169,7 @@ PCRE2_JIT_INVALID_UTF, which currently exists only for backward compatibility.
 It is superseded by the `pcre2_compile()` option PCRE2_MATCH_INVALID_UTF
 and should no longer be used. It may be removed in future.
 
-== Unsupported Options And Pattern Items
+== Unsupported options and pattern items
 
 The `pcre2_match()` options that are supported for JIT matching are
 PCRE2_COPY_MATCHED_SUBJECT, PCRE2_NOTBOL, PCRE2_NOTEOL, PCRE2_NOTEMPTY,
@@ -184,7 +184,7 @@ The only unsupported pattern items are \C (match a single data unit) when
 running in a UTF mode, and a callout immediately before an assertion condition
 in a conditional group.
 
-== Return Values From Jit Matching
+== Return values from JIT matching
 
 When a pattern is matched using JIT, the return values are the same as those
 given by the interpretive `pcre2_match()` code, with the addition of one
@@ -199,7 +199,7 @@ circumstance when JIT is not used, but the details of exactly what is counted
 are not the same. The PCRE2_ERROR_DEPTHLIMIT error code is never returned
 when JIT matching is used.
 
-== Controlling The Jit Stack
+== Controlling the JIT stack
 
 When the compiled JIT code runs, it needs a block of memory to use as a stack.
 By default, it uses 32KiB on the machine stack. However, some large or
@@ -307,7 +307,7 @@ Use a one-line callback function
 
 All the functions described in this section do nothing if JIT is not available.
 
-== Jit Stack Faq
+== JIT stack FAQ
 
 (1) Why do we need JIT stacks?
 
@@ -373,7 +373,7 @@ stack handling?
 No, thanks to Windows. If POSIX threads were used everywhere, we could throw
 out this complicated API.
 
-== Freeing Jit Speculative Memory
+== Freeing JIT speculative memory
 
 [source]
 ----
@@ -387,7 +387,7 @@ all possible memory. You can cause this to happen by calling
 pcre2_jit_free_unused_memory(). Its argument is a general context, for custom
 memory management, or NULL for standard memory management.
 
-== Example Code
+== Example code
 
 This is a single-threaded example that specifies a JIT stack without using a
 callback. A real program should include error checking after all the function
@@ -423,7 +423,7 @@ pcre2_match_context_free(mcontext);
 pcre2_jit_stack_free(jit_stack);
 ....
 
-== Jit Fast Path Api
+== JIT fast path API
 
 Because the API described above falls back to interpreted matching when JIT is
 not available, it is convenient for programs that are written for general use
@@ -457,7 +457,7 @@ subject is valid.
 Bypassing the sanity checks and the `pcre2_match()` wrapping can give
 speedups of more than 10%.
 
-== See Also
+== See also
 
 `pcre2api`(3), `pcre2unicode`(3)
 

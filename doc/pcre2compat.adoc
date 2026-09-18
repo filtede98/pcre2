@@ -8,7 +8,7 @@
 :docdate: 02 June 2025
 :revdate: 02 June 2025
 
-== Differences Between Pcre2 And Perl
+== Differences between PCRE2 and Perl
 
 This document describes some of the known differences in the ways that PCRE2
 and Perl handle regular expressions. The differences described here are with

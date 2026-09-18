@@ -8,7 +8,7 @@
 :docdate: 19 January 2024
 :revdate: 19 January 2024
 
-== Saving And Re-Using Precompiled Pcre2 Patterns
+== Saving and re-using precompiled PCRE2 patterns
 
 [source]
 ----
@@ -47,7 +47,7 @@ Applications that are not statically linked with a fixed version of PCRE2 must
 be prepared to recompile patterns from their sources, in order to be immune to
 PCRE2 upgrades.
 
-== Security Concerns
+== Security concerns
 
 The facility for saving and restoring compiled patterns is intended for use
 within individual applications. As such, the data supplied to
@@ -58,7 +58,7 @@ undefined results. For example, if the length field of a pattern in the
 serialized data is corrupted, the deserializing code may read beyond the end of
 the byte stream that is passed to it.
 
-== Saving Compiled Patterns
+== Saving compiled patterns
 
 Before compiled patterns can be saved they must be serialized, which in PCRE2
 means converting the pattern to a stream of bytes. A single byte stream may
@@ -125,7 +125,7 @@ stream, it too must be freed by calling `pcre2_serialize_free()`. If this
 function is called with a NULL argument, it returns immediately without doing
 anything.
 
-== Re-Using Precompiled Patterns
+== Re-using precompiled patterns
 
 In order to re-use a set of saved patterns you must first make the serialized
 byte stream available in main memory (for example, by reading from a file). The

@@ -8,7 +8,7 @@
 :docdate: 22 February 2025
 :revdate: 22 February 2025
 
-== Pcre2 Matching Algorithms
+== PCRE2 matching algorithms
 
 This document describes the two different algorithms that are available in
 PCRE2 for matching a compiled regular expression against a given subject
@@ -43,7 +43,7 @@ is matched against the string
 there are three possible answers. The standard algorithm finds only one of
 them, whereas the alternative algorithm finds all three.
 
-== Regular Expressions As Trees
+== Regular expressions as trees
 
 The set of strings that are matched by a regular expression can be represented
 as a tree structure. An unlimited repetition in the pattern makes the tree of
@@ -52,7 +52,7 @@ string (from a given starting point) can be thought of as a search of the tree.
 There are two ways to search a tree: depth-first and breadth-first, and these
 correspond to the two matching algorithms provided by PCRE2.
 
-== The Standard Matching Algorithm
+== The standard matching algorithm
 
 In the terminology of Jeffrey Friedl's book "Mastering Regular Expressions",
 the standard algorithm is an "NFA algorithm". It conducts a depth-first search
@@ -76,7 +76,7 @@ straightforward for this algorithm to keep track of the substrings that are
 matched by portions of the pattern in parentheses. This provides support for
 capturing parentheses and backreferences.
 
-== The Alternative Matching Algorithm
+== The alternative matching algorithm
 
 This algorithm conducts a breadth-first search of the tree. Starting from the
 first matching point in the subject, it scans the subject string from left to
@@ -181,7 +181,7 @@ supported. (pass:[*]FAIL) is supported, and behaves like a failing negative asse
 pass:[8.] The PCRE2_MATCH_INVALID_UTF option for `pcre2_compile()` is not
 supported by `pcre2_dfa_match()`.
 
-== Advantages Of The Alternative Algorithm
+== Advantages of the alternative algorithm
 
 The main advantage of the alternative algorithm is that all possible matches
 (at a single point in the subject) are automatically found, and in particular,
@@ -194,7 +194,7 @@ xref:pcre2partial.adoc[`pcre2partial`]
 documentation gives details of partial matching and discusses multi-segment
 matching.
 
-== Disadvantages Of The Alternative Algorithm
+== Disadvantages of the alternative algorithm
 
 The alternative algorithm suffers from a number of disadvantages:
 

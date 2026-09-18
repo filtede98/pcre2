@@ -8,7 +8,7 @@
 :docdate: 28 February 2025
 :revdate: 28 February 2025
 
-== Pcre2 Sample Program
+== PCRE2 sample program
 
 A simple, complete demonstration program to get you started with using PCRE2 is
 supplied in the file _pcre2demo.c_ in the `src` directory in the PCRE2

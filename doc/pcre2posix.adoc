@@ -73,7 +73,7 @@ _regex_t_ for compiled internal forms, and _regmatch_t_ for returning
 captured substrings. It also defines some constants whose names start with
 "REG_"; these are used for setting options and identifying error codes.
 
-== Using The Posix Functions
+== Using the POSIX functions
 
 Note that these functions are just POSIX-style wrappers for PCRE2's native API.
 They do not give POSIX regular expression behaviour, and they are not
@@ -100,7 +100,7 @@ The descriptions below use the actual names of the functions, but, as described
 above, the standard POSIX names (without the `pcre2_` prefix) may also be
 used.
 
-== Compiling A Pattern
+== Compiling a pattern
 
 The function `pcre2_regcomp()` is called to compile a pattern into an
 internal form. By default, the pattern is a C string terminated by a binary
@@ -223,7 +223,7 @@ to use the contents of the _preg_ structure. If, for example, you pass it
 to `pcre2_regexec()`, the result is undefined and your program is likely to
 crash.
 
-== Matching Newline Characters
+== Matching newline characters
 
 This area is not simple, because POSIX and Perl take different views of things.
 It is not possible to get PCRE2 to obey POSIX semantics, but then PCRE2 was
@@ -266,7 +266,7 @@ the POSIX API, passing REG_NEWLINE to PCRE2's `pcre2_regcomp()` function
 causes PCRE2_MULTILINE to be passed to `pcre2_compile()`, and REG_DOTALL
 passes PCRE2_DOTALL. There is no way to pass PCRE2_DOLLAR_ENDONLY.
 
-== Matching A Pattern
+== Matching a pattern
 
 The function `pcre2_regexec()` is called to match a compiled pattern
 _preg_ against a given _string_, which is by default terminated by a
@@ -347,7 +347,7 @@ similarly named types from other libraries that provide POSIX-style matching.
 A successful match yields a zero return; various error codes are defined in the
 header file, of which REG_NOMATCH is the "expected" failure code.
 
-== Error Messages
+== Error messages
 
 The `pcre2_regerror()` function maps a non-zero errorcode from either
 `pcre2_regcomp()` or `pcre2_regexec()` to a printable message. If
@@ -358,7 +358,7 @@ error message are used. The yield of the function is the size of buffer needed
 to hold the whole message, including the terminating zero. This value is
 greater than _errbuf_size_ if the message was truncated.
 
-== Memory Usage
+== Memory usage
 
 Compiling a regular expression causes memory to be allocated and associated
 with the _preg_ structure. The function `pcre2_regfree()` frees all

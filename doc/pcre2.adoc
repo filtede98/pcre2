@@ -90,7 +90,7 @@ environments, it is possible to control which external symbols are exported
 when a shared library is built, and in these cases the undocumented symbols are
 not exported.
 
-== Security Considerations
+== Security considerations
 
 If you are using PCRE2 in a non-UTF application that permits users to supply
 arbitrary patterns for compilation, you should be aware of a feature that
@@ -132,7 +132,7 @@ xref:pcre2api.adoc[`pcre2api`]
 page. There is a similar function called `pcre2_set_depth_limit()` that can
 be used to restrict the amount of memory that is used.
 
-== User Documentation
+== User documentation
 
 The user documentation for PCRE2 comprises a number of different sections. In
 the "man" format, each of these is a separate "man page". In the HTML format,

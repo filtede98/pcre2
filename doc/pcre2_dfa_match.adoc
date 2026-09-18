@@ -36,7 +36,7 @@ arg:subject::
     Points to the subject string
 arg:length::
     Length of the subject string
-arg:startoffset::
+arg:start_offset::
     Offset in the subject at which to start matching
 arg:options::
     Option bits
@@ -56,7 +56,7 @@ data block is therefore not advisable when using this function.
 
 A match context is needed only if you want to set up a callout function or
 specify the heap limit or the match or the recursion depth limits. The
-arg:length and arg:startoffset values are code units, not characters. The
+arg:length and arg:start_offset values are code units, not characters. The
 options are:
 
 [.options]

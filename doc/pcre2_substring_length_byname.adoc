@@ -27,9 +27,9 @@ The arguments are:
 [.parameters]
 arg:match_data::
     The match data block for the match
-arg:name::
+arg:stringname::
     The substring name
-arg:length::
+arg:sizeptr::
     Where to return the length, or [.c]`NULL`
 
 The third argument may be [.c]`NULL` if all you want to know is whether or not a

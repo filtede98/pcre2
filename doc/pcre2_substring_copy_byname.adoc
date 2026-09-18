@@ -28,21 +28,21 @@ by name, into a given buffer. The arguments are:
 [.parameters]
 arg:match_data::
     The match data block for the match
-arg:name::
+arg:stringname::
     Name of the required substring
 arg:buffer::
     Buffer to receive the string
-arg:bufflen::
+arg:sizeptr::
     Length of buffer (code units)
 
-The arg:bufflen variable is updated to contain the length of the extracted
+The arg:sizeptr variable is updated to contain the length of the extracted
 string, excluding the trailing zero. The yield of the function is zero for
 success or one of the following error numbers:
 
 [.errors]
 const:PCRE2_ERROR_NOSUBSTRING::
     there are no groups of that name
-[.c]`PCRE2_ERROR_UNAVAILBLE`::
+const:PCRE2_ERROR_UNAVAILABLE::
     the ovector was too small for that group
 const:PCRE2_ERROR_UNSET::
     the group did not participate in the match

@@ -27,7 +27,7 @@ function arguments are:
 [.parameters]
 arg:code::
     Compiled regular expression
-arg:name::
+arg:stringname::
     Name whose number is required
 
 The yield of the function is the number of the parenthesis if the name is

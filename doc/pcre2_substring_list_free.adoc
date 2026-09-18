@@ -20,7 +20,7 @@ void pcre2_substring_list_free(PCRE2_UCHAR **list);
 == Description
 
 This is a convenience function for freeing the store obtained by a previous
-call to [.c]`pcre2substring_list_get()`. Its only argument is a pointer to
+call to func:pcre2_substring_list_get(). Its only argument is a pointer to
 the list of string pointers. If the argument is [.c]`NULL`, the function returns
 immediately, without doing anything.
 

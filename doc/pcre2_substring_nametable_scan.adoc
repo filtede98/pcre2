@@ -29,16 +29,17 @@ numbers.
 [.parameters]
 arg:code::
     Compiled regular expression
-arg:name::
+arg:stringname::
     Name whose entries required
-arg:first::
+arg:firstptr::
     Where to return a pointer to the first entry
-arg:last::
+arg:lastptr::
     Where to return a pointer to the last entry
 
-When the name is found in the table, if arg:first is [.c]`NULL`, the function
+When the name is found in the table, if arg:firstptr is [.c]`NULL`, the function
 returns a group number, but if there is more than one matching entry, it is not
-defined which one. Otherwise, when both pointers have been set, the yield of
+defined which one. Otherwise, when both arg:firstptr and arg:lastptr have been
+set, the yield of
 the function is the length of each entry in code units. If the name is not
 found, const:PCRE2_ERROR_NOSUBSTRING is returned.
 

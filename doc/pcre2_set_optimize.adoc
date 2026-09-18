@@ -50,6 +50,6 @@ const:PCRE2_START_OPTIMIZE_OFF::
     Disable start-up optimizations at match time
 
 There is a complete description of the PCRE2 native API, including detailed
-descriptions arg:directive parameter values in the
+descriptions of arg:directive parameter values in the
 xref:pcre2api.adoc[`pcre2api`]
 page.

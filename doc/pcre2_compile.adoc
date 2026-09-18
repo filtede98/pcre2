@@ -28,13 +28,13 @@ arguments are:
 [.parameters]
 arg:pattern::
     A string containing expression to be compiled
-arg:length::
+arg:patlen::
     The length of the string or const:PCRE2_ZERO_TERMINATED
 arg:options::
     Primary option bits
-arg:errorcode::
+arg:errorptr::
     Where to put an error code
-arg:erroffset::
+arg:erroroffset::
     Where to put an error offset
 arg:ccontext::
     Pointer to a compile context or [.c]`NULL`
@@ -126,15 +126,15 @@ Additional options may be set in the compile context via the
 xref:pcre2_set_compile_extra_options.adoc[`pcre2_set_compile_extra_options`]
 function.
 
-If either of arg:errorcode or arg:erroroffset is [.c]`NULL`, the function returns
+If either of arg:errorptr or arg:erroroffset is [.c]`NULL`, the function returns
 [.c]`NULL` immediately. Otherwise, the yield of this function is a pointer to a
 private data structure that contains the compiled pattern, or [.c]`NULL` if an error
 was detected. In the error case, a text error message can be obtained by
-passing the value returned via the arg:errorcode argument to the
+passing the value returned via the arg:errorptr argument to the
 func:pcre2_get_error_message() function. The offset (in code units) where the
 error was encountered is returned via the arg:erroroffset argument.
 
-If there is no error, the value passed via arg:errorcode returns the message
+If there is no error, the value passed via arg:errorptr returns the message
 "no error" if passed to func:pcre2_get_error_message(), and the value passed
 via arg:erroroffset is zero.
 

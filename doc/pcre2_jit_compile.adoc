@@ -27,7 +27,7 @@ xref:pcre2jit.adoc[`pcre2jit`]
 documentation.
 
 The availability of JIT support can be tested by calling
-[.c]`pcre2_compile_jit()` with a single option const:PCRE2_JIT_TEST_ALLOC (the
+func:pcre2_jit_compile() with a single option const:PCRE2_JIT_TEST_ALLOC (the
 arg:code argument is ignored, so a [.c]`NULL` value is accepted). Such a call
 returns zero if JIT is available and has a working allocator. Otherwise
 it returns const:PCRE2_ERROR_NOMEMORY if JIT is available but cannot allocate

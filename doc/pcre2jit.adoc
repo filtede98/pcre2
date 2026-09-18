@@ -59,7 +59,7 @@ executable memory in which to build its compiled code. The only guarantee from
 be used.
 
 As of release 10.45 there is a more informative way to test for JIT support. If
-`pcre2_compile_jit()` is called with the single option PCRE2_JIT_TEST_ALLOC
+`pcre2_jit_compile()` is called with the single option PCRE2_JIT_TEST_ALLOC
 it returns zero if JIT is available and has a working allocator. Otherwise it
 returns PCRE2_ERROR_NOMEMORY if JIT is available but cannot allocate executable
 memory, or PCRE2_ERROR_JIT_UNSUPPORTED if JIT support is not compiled. The

@@ -26,7 +26,7 @@ that are required. These form the "output vector" (ovector) within the match
 data block, and are used to identify the matched string and any captured
 substrings when matching with func:pcre2_match(), or a number of different
 matches at the same point when used with func:pcre2_dfa_match(). There is
-always one pair of offsets; if [.c]`ovecsize` is zero, it is treated as one.
+always one pair of offsets; if arg:oveccount is zero, it is treated as one.
 
 The second argument points to a general context, for custom memory management,
 or is [.c]`NULL` for system memory management. The result of the function is [.c]`NULL` if

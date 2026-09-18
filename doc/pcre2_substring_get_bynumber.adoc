@@ -28,11 +28,11 @@ into newly acquired memory. The arguments are:
 [.parameters]
 arg:match_data::
     The match data for the match
-arg:number::
+arg:stringnumber::
     Number of the required substring
-arg:bufferptr::
+arg:stringptr::
     Where to put the string pointer
-arg:bufflen::
+arg:sizeptr::
     Where to put the string length
 
 The memory in which the substring is placed is obtained by calling the same
@@ -44,7 +44,7 @@ the following error numbers:
 [.errors]
 const:PCRE2_ERROR_NOSUBSTRING::
     there are no groups of that number
-[.c]`PCRE2_ERROR_UNAVAILBLE`::
+const:PCRE2_ERROR_UNAVAILABLE::
     the ovector was too small for that group
 const:PCRE2_ERROR_UNSET::
     the group did not participate in the match

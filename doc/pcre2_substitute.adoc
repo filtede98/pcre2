@@ -36,7 +36,7 @@ arg:subject::
     Points to the subject string
 arg:length::
     Length of the subject string
-arg:startoffset::
+arg:start_offset::
     Offset in the subject at which to start matching
 arg:options::
     Option bits
@@ -48,9 +48,9 @@ arg:replacement::
     Points to the replacement string
 arg:rlength::
     Length of the replacement string
-arg:outputbuffer::
+arg:buffer::
     Points to the output buffer
-arg:outlengthptr::
+arg:blength::
     Points to the length of the output buffer
 
 A match data block is needed only if you want to inspect the data from the
@@ -63,9 +63,9 @@ set. A match context is needed only if you want to:
 * Change the backtracking depth limit
 * Set custom memory management in the match context
 
-The arg:length, arg:startoffset and arg:rlength values are code units,
+The arg:length, arg:start_offset and arg:rlength values are code units,
 not characters, as is the contents of the variable pointed at by
-arg:outlengthptr. This variable must contain the length of the output buffer
+arg:blength. This variable must contain the length of the output buffer
 when the function is called. If the function is successful, the value is
 changed to the length of the new string, excluding the trailing zero that is
 automatically added.

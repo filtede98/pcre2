@@ -39,7 +39,7 @@ arg:subject::
     Points to the subject string
 arg:length::
     Length of the subject string
-arg:startoffset::
+arg:start_offset::
     Offset in the subject at which to start matching
 arg:options::
     Option bits
@@ -57,7 +57,7 @@ A match context is needed only if you want to:
 * Change the backtracking depth limit
 * Set custom memory management specifically for the match
 
-The arg:length and arg:startoffset values are code units, not characters.
+The arg:length and arg:start_offset values are code units, not characters.
 The length may be given as const:PCRE2_ZERO_TERMINATED for a subject that is
 terminated by a binary zero code unit. The options are:
 

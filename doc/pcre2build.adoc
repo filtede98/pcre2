@@ -44,7 +44,7 @@ The complete list of options for `configure` (which includes the standard
 ones such as the selection of the installation directory) can be obtained by
 running
 
-[literal]
+[source,shell]
 ....
 ./configure --help
 ....
@@ -67,7 +67,7 @@ respectively. These can be interpreted either as single-unit characters or
 UTF-16/UTF-32 strings. To build these additional libraries, add one or both of
 the following to the `configure` command:
 
-[literal]
+[source,shell]
 ....
 --enable-pcre2-16
 --enable-pcre2-32
@@ -75,7 +75,7 @@ the following to the `configure` command:
 
 If you do not want the 8-bit library, add
 
-[literal]
+[source,shell]
 ....
 --disable-pcre2-8
 ....
@@ -91,7 +91,7 @@ The Autotools PCRE2 building process uses `libtool` to build both shared
 and static libraries by default. You can suppress an unwanted library by adding
 one of
 
-[literal]
+[source,shell]
 ....
 --disable-shared
 --disable-static
@@ -104,7 +104,10 @@ are linked statically with one or more PCRE2 libraries, but may also be
 dynamically linked with other libraries such as `libc`. If you want these
 binaries to be fully statically linked, you can set LDFLAGS like this:
 
+[source,shell]
+....
 LDFLAGS=--static ./configure --disable-shared
+....
 
 Note the two hyphens in --static. Of course, this works only if static versions
 of all the relevant libraries are available for linking.
@@ -114,7 +117,7 @@ of all the relevant libraries are available for linking.
 By default, PCRE2 is built with support for Unicode and UTF character strings.
 To build it without Unicode support, add
 
-[literal]
+[source,shell]
 ....
 --disable-unicode
 ....
@@ -124,45 +127,45 @@ is not possible to build one library with Unicode support and another without
 in the same configuration.
 
 Of itself, Unicode support does not make PCRE2 treat strings as UTF-8, UTF-16
-or UTF-32. To do that, applications that use the library can set the PCRE2_UTF
-option when they call `pcre2_compile()` to compile a pattern.
-Alternatively, patterns may be started with (pass:[*]UTF) unless the application has
-locked this out by setting PCRE2_NEVER_UTF.
+or UTF-32. To do that, applications that use the library can set the const:PCRE2_UTF
+option when they call func:pcre2_compile() to compile a pattern.
+Alternatively, patterns may be started with [.regex]`(*UTF)` unless the application has
+locked this out by setting const:PCRE2_NEVER_UTF.
 
 UTF support allows the libraries to process character code points up to
 0x10ffff in the strings that they handle. Unicode support also gives access to
-the Unicode properties of characters, using pattern escapes such as \P, \p,
-and \X. Only the general category properties such as _Lu_ and _Nd_,
+the Unicode properties of characters, using pattern escapes such as [.regex]`\P`, [.regex]`\p`,
+and [.regex]`\X`. Only the general category properties such as _Lu_ and _Nd_,
 script names, and some bi-directional and binary properties are supported.
 Details are given in the
 xref:pcre2pattern.adoc[`pcre2pattern`]
 documentation.
 
-Pattern escapes such as \d and \w do not by default make use of Unicode
-properties. The application can request that they do by setting the PCRE2_UCP
-option. Unless the application has set PCRE2_NEVER_UCP, a pattern may also
-request this by starting with (pass:[*]UCP).
+Pattern escapes such as [.regex]`\d` and [.regex]`\w` do not by default make use of Unicode
+properties. The application can request that they do by setting the const:PCRE2_UCP
+option. Unless the application has set const:PCRE2_NEVER_UCP, a pattern may also
+request this by starting with [.regex]`(*UCP)`.
 
-== Disabling the use of \C
+== Disabling the use of [.regex]`\C`
 
-The \C escape sequence, which matches a single code unit, even in a UTF mode,
+The [.regex]`\C` escape sequence, which matches a single code unit, even in a UTF mode,
 can cause unpredictable behaviour because it may leave the current matching
 point in the middle of a multi-code-unit character. The application can lock
-it out by setting the PCRE2_NEVER_BACKSLASH_C option when calling
-`pcre2_compile()`. There is also a build-time option
+it out by setting the const:PCRE2_NEVER_BACKSLASH_C option when calling
+func:pcre2_compile(). There is also a build-time option
 
-[literal]
+[source,shell]
 ....
 --enable-never-backslash-C
 ....
 
-(note the upper case C) which locks out the use of \C entirely.
+(note the upper case C) which locks out the use of [.regex]`\C` entirely.
 
 == Just-in-time compiler support
 
 Just-in-time (JIT) compiler support is included in the build by specifying
 
-[literal]
+[source,shell]
 ....
 --enable-jit
 ....
@@ -171,7 +174,7 @@ This support is available only for certain hardware architectures. If this
 option is set for an unsupported architecture, a building error occurs.
 If in doubt, use
 
-[literal]
+[source,shell]
 ....
 --enable-jit=auto
 ....
@@ -181,7 +184,7 @@ if JIT is enabled in the configuration summary that is output at the end of a
 `configure` run. If you are enabling JIT under SELinux you may also want to
 add
 
-[literal]
+[source,shell]
 ....
 --enable-jit-sealloc
 ....
@@ -192,7 +195,7 @@ xref:pcre2jit.adoc[`pcre2jit`]
 documentation for a discussion of JIT usage. When JIT support is enabled,
 `pcre2grep` automatically makes use of it, unless you add
 
-[literal]
+[source,shell]
 ....
 --disable-pcre2grep-jit
 ....
@@ -205,7 +208,7 @@ By default, PCRE2 interprets the linefeed (LF) character as indicating the end
 of a line. This is the normal newline character on Unix-like systems. You can
 compile PCRE2 to use carriage return (CR) instead, by adding
 
-[literal]
+[source,shell]
 ....
 --enable-newline-is-cr
 ....
@@ -217,14 +220,14 @@ Alternatively, you can specify that line endings are to be indicated by the
 two-character sequence CRLF (CR immediately followed by LF). If you want this,
 add
 
-[literal]
+[source,shell]
 ....
 --enable-newline-is-crlf
 ....
 
 to the `configure` command. There is a fourth option, specified by
 
-[literal]
+[source,shell]
 ....
 --enable-newline-is-anycrlf
 ....
@@ -232,17 +235,17 @@ to the `configure` command. There is a fourth option, specified by
 which causes PCRE2 to recognize any of the three sequences CR, LF, or CRLF as
 indicating a line ending. A fifth option, specified by
 
-[literal]
+[source,shell]
 ....
 --enable-newline-is-any
 ....
 
 causes PCRE2 to recognize any Unicode newline sequence. The Unicode newline
 sequences are the three just mentioned, plus the single characters VT (vertical
-tab, Upass:[+]000B), FF (form feed, Upass:[+]000C), NEL (next line, Upass:[+]0085), LS (line
-separator, Upass:[+]2028), and PS (paragraph separator, Upass:[+]2029). The final option is
+tab, `U+000B`), FF (form feed, `U+000C`), NEL (next line, `U+0085`), LS (line
+separator, `U+2028`), and PS (paragraph separator, `U+2029`). The final option is
 
-[literal]
+[source,shell]
 ....
 --enable-newline-is-nul
 ....
@@ -253,18 +256,18 @@ Whatever default line ending convention is selected when PCRE2 is built can be
 overridden by applications that use the library. At build time it is
 recommended to use the standard for your operating system.
 
-== What \R matches
+== What [.regex]`\R` matches
 
-By default, the sequence \R in a pattern matches any Unicode newline sequence,
+By default, the sequence [.regex]`\R` in a pattern matches any Unicode newline sequence,
 independently of what has been selected as the line ending sequence. If you
 specify
 
-[literal]
+[source,shell]
 ....
 --enable-bsr-anycrlf
 ....
 
-the default is changed so that \R matches only CR, LF, or CRLF. Whatever is
+the default is changed so that [.regex]`\R` matches only CR, LF, or CRLF. Whatever is
 selected when PCRE2 is built can be overridden by applications that use the
 library.
 
@@ -279,7 +282,7 @@ gigantic patterns. Nevertheless, some people do want to process truly enormous
 patterns, so it is possible to compile PCRE2 to use three-byte or four-byte
 offsets by adding a setting such as
 
-[literal]
+[source,shell]
 ....
 --with-link-size=3
 ....
@@ -292,24 +295,24 @@ additional data when handling them. For the 32-bit library the value is always
 
 == Limiting PCRE2 resource usage
 
-The `pcre2_match()` function increments a counter each time it goes round
+The func:pcre2_match() function increments a counter each time it goes round
 its main loop. Putting a limit on this counter controls the amount of computing
-resource used by a single call to `pcre2_match()`. The limit can be changed
+resource used by a single call to func:pcre2_match(). The limit can be changed
 at run time, as described in the
 xref:pcre2api.adoc[`pcre2api`]
 documentation. The default is 10 million, but this can be changed by adding a
 setting such as
 
-[literal]
+[source,shell]
 ....
 --with-match-limit=500000
 ....
 
 to the `configure` command. This setting also applies to the
-`pcre2_dfa_match()` matching function, and to JIT matching (though the
+func:pcre2_dfa_match() matching function, and to JIT matching (though the
 counting is done differently).
 
-The `pcre2_match()` function uses heap memory to record backtracking
+The func:pcre2_match() function uses heap memory to record backtracking
 points. The more nested backtracking points there are (that is, the deeper the
 search tree), the more memory is needed. There is an upper limit, specified in
 kibibytes (units of 1024 bytes). This limit can be changed at run time, as
@@ -318,23 +321,23 @@ xref:pcre2api.adoc[`pcre2api`]
 documentation. The default limit (in effect unlimited) is 20 million. You can
 change this by a setting such as
 
-[literal]
+[source,shell]
 ....
 --with-heap-limit=500
 ....
 
 which limits the amount of heap to 500 KiB. This limit applies only to
-interpretive matching in `pcre2_match()` and `pcre2_dfa_match()`, which
+interpretive matching in func:pcre2_match() and func:pcre2_dfa_match(), which
 may also use the heap for internal workspace when processing complicated
 patterns. This limit does not apply when JIT (which has its own memory
 arrangements) is used.
 
 You can also explicitly limit the depth of nested backtracking in the
-`pcre2_match()` interpreter. This limit defaults to the value that is set
+func:pcre2_match() interpreter. This limit defaults to the value that is set
 for --with-match-limit. You can set a lower default limit by adding, for
 example,
 
-[literal]
+[source,shell]
 ....
 --with-match-limit-depth=10000
 ....
@@ -346,8 +349,8 @@ capturing parentheses in a pattern, the amount of heap that is used before the
 limit is reached varies from pattern to pattern. This limit was more useful in
 versions before 10.30, where function recursion was used for backtracking.
 
-As well as applying to `pcre2_match()`, the depth limit also controls
-the depth of recursive function calls in `pcre2_dfa_match()`. These are
+As well as applying to func:pcre2_match(), the depth limit also controls
+the depth of recursive function calls in func:pcre2_dfa_match(). These are
 used for lookaround assertions, atomic groups, and recursion within patterns.
 The limit does not apply to JIT matching.
 
@@ -358,13 +361,13 @@ of characters are supported only if there is a maximum matching length for each
 top-level branch. There is a limit to this maximum that defaults to 255
 characters. You can alter this default by a setting such as
 
-[literal]
+[source,shell]
 ....
 --with-max-varlookbehind=100
 ....
 
 The limit can be changed at runtime by calling
-`pcre2_set_max_varlookbehind()`. Lookbehind assertions in which every
+func:pcre2_set_max_varlookbehind(). Lookbehind assertions in which every
 branch matches a fixed number of characters (not necessarily all the same) are
 not constrained by this limit.
 
@@ -375,7 +378,7 @@ than 256. By default, PCRE2 is built with a set of tables that are distributed
 in the file _src/pcre2_chartables.c.dist_. These tables are for ASCII codes
 only. If you add
 
-[literal]
+[source,shell]
 ....
 --enable-rebuild-chartables
 ....
@@ -393,7 +396,7 @@ To cause `pcre2_dftables` to be built on the local host, run a normal
 compiling command, and then run the program with the output file as its
 argument, for example:
 
-[literal]
+[source,shell]
 ....
 cc src/pcre2_dftables.c -o pcre2_dftables
 ./pcre2_dftables src/pcre2_chartables.c
@@ -402,15 +405,15 @@ cc src/pcre2_dftables.c -o pcre2_dftables
 This builds the tables in the default locale of the local host. If you want to
 specify a locale, you must use the -L option:
 
-[literal]
+[source,shell]
 ....
 LC_ALL=fr_FR ./pcre2_dftables -L src/pcre2_chartables.c
 ....
 
 You can also specify -b (with or without -L). This causes the tables to be
 written in binary instead of as source code. A set of binary tables can be
-loaded into memory by an application and passed to `pcre2_compile()` in the
-same way as tables created by calling `pcre2_maketables()`. The tables are
+loaded into memory by an application and passed to func:pcre2_compile() in the
+same way as tables created by calling func:pcre2_maketables(). The tables are
 just a string of bytes, independent of hardware characteristics such as
 endianness. This means they can be bundled with an application that runs in
 different environments, to ensure consistent behaviour.
@@ -422,7 +425,7 @@ code is ASCII or Unicode, which is a superset of ASCII. This is the case for
 most computer operating systems. PCRE2 can, however, be compiled to run in an
 8-bit EBCDIC environment by adding
 
-[literal]
+[source,shell]
 ....
 --enable-ebcdic --disable-unicode
 ....
@@ -445,7 +448,7 @@ The EBCDIC character that corresponds to an ASCII LF is assumed to have the
 value 0x15 by default. However, in some EBCDIC environments, 0x25 is used. In
 such an environment you should use
 
-[literal]
+[source,shell]
 ....
 --enable-ebcdic-nl25
 ....
@@ -464,7 +467,7 @@ numeric value for whichever EBCDIC codpage is in use. (PCRE2 cannot support
 multiple EBCDIC codepages dynamically.) However, if this not possible, then you
 can use
 
-[literal]
+[source,shell]
 ....
 --enable-ebcdic-ignoring-compiler
 ....
@@ -491,7 +494,7 @@ By default, `pcre2grep` reads all files as plain text. You can build it so
 that it recognizes files whose names end in `.gz` or `.bz2`, and reads
 them with `libz` or `libbz2`, respectively, by adding one or both of
 
-[literal]
+[source,shell]
 ....
 --enable-pcre2grep-libz
 --enable-pcre2grep-libbz2
@@ -513,7 +516,7 @@ automatically expands the buffer, up to a specified maximum size, whose default
 is 1MiB or the starting size, whichever is the larger. You can change the
 default parameter values by adding, for example,
 
-[literal]
+[source,shell]
 ....
 --with-pcre2grep-bufsize=51200
 --with-pcre2grep-max-bufsize=2097152
@@ -526,7 +529,7 @@ these values by using --buffer-size and --max-buffer-size on the command line.
 
 If you add one of
 
-[literal]
+[source,shell]
 ....
 --enable-pcre2test-libreadline
 --enable-pcre2test-libedit
@@ -557,7 +560,7 @@ which link with readline the to choose an appropriate library."
 If your environment has not been set up so that an appropriate library is
 automatically included, you may need to add something like
 
-[literal]
+[source,shell]
 ....
 LIBS="-lncurses"
 ....
@@ -568,7 +571,7 @@ immediately before the `configure` command.
 
 If you add
 
-[literal]
+[source,shell]
 ....
 --enable-debug
 ....
@@ -580,7 +583,7 @@ build. This feature is intended for use by the PCRE2 maintainers.
 
 If you add
 
-[literal]
+[source,shell]
 ....
 --enable-valgrind
 ....
@@ -595,7 +598,7 @@ If your C compiler is gcc, you can build a version of PCRE2 that can generate a
 code coverage report for its test suite. To enable this, you must install
 `lcov` version 1.6 or above. Then specify
 
-[literal]
+[source,shell]
 ....
 --enable-coverage
 ....
@@ -606,7 +609,7 @@ Note that using `ccache` (a caching C compiler) is incompatible with code
 coverage reporting. If you have configured `ccache` to run automatically
 on your system, you must set the environment variable
 
-[literal]
+[source,shell]
 ....
 CCACHE_DISABLE=1
 ....
@@ -616,7 +619,7 @@ before running `make` to build PCRE2, so that `ccache` is not used.
 When --enable-coverage is used, the following addition targets are added to the
 _Makefile_:
 
-[literal]
+[source,shell]
 ....
 make coverage
 ....
@@ -625,28 +628,28 @@ This creates a fresh coverage report for the PCRE2 test suite. It is equivalent
 to running "make coverage-reset", "make coverage-baseline", "make check", and
 then "make coverage-report".
 
-[literal]
+[source,shell]
 ....
 make coverage-reset
 ....
 
 This zeroes the coverage counters, but does nothing else.
 
-[literal]
+[source,shell]
 ....
 make coverage-baseline
 ....
 
 This captures baseline coverage information.
 
-[literal]
+[source,shell]
 ....
 make coverage-report
 ....
 
 This creates the coverage report.
 
-[literal]
+[source,shell]
 ....
 make coverage-clean-report
 ....
@@ -654,15 +657,15 @@ make coverage-clean-report
 This removes the generated coverage report without cleaning the coverage data
 itself.
 
-[literal]
+[source,shell]
 ....
 make coverage-clean-data
 ....
 
 This removes the captured coverage data without removing the coverage files
-created at compile time (pass:[*].gcno).
+created at compile time (`*.gcno`).
 
-[literal]
+[source,shell]
 ....
 make coverage-clean
 ....
@@ -676,12 +679,12 @@ documentation.
 The C99 standard defines formatting modifiers z and t for size_t and
 ptrdiff_t values, respectively. By default, PCRE2 uses these modifiers in
 environments other than old versions of Microsoft Visual Studio when
-pass:[__STDC_VERSION__] is defined and has a value greater than or equal to 199901L
+[.c]`__STDC_VERSION__` is defined and has a value greater than or equal to 199901L
 (indicating support for C99).
 However, there is at least one environment that claims to be C99 but does not
 support these modifiers. If
 
-[literal]
+[source,shell]
 ....
 --disable-percent-zt
 ....
@@ -694,7 +697,7 @@ a suitable format is used depending in the size of long for the platform.
 There is a special option for use by people who want to run fuzzing tests on
 PCRE2:
 
-[literal]
+[source,shell]
 ....
 --enable-fuzz-support
 ....
@@ -718,10 +721,10 @@ file are the test string.
 == Obsolete option
 
 In versions of PCRE2 prior to 10.30, there were two ways of handling
-backtracking in the `pcre2_match()` function. The default was to use the
+backtracking in the func:pcre2_match() function. The default was to use the
 system stack, but if
 
-[literal]
+[source,shell]
 ....
 --disable-stack-for-recursion
 ....
@@ -736,7 +739,7 @@ give a warning.
 
 == Author
 
-[source]
+[literal]
 ----
 Philip Hazel
 Retired from University Computing Service

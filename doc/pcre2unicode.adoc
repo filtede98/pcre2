@@ -20,7 +20,7 @@ treats each code unit in a string as one character.
 There are two ways of telling PCRE2 to switch to UTF mode, where characters may
 consist of more than one code unit and the range of values is constrained. The
 program can call
-xref:pcre2_compile.adoc[`pcre2_compile()`]
+xref:pcre2_compile.adoc[func:pcre2_compile()]
 with the const:PCRE2_UTF option, or the pattern may start with the sequence [.regex]`(*UTF)`.
 However, the latter facility can be locked out by the const:PCRE2_NEVER_UTF option.
 That is, the programmer can prevent the supplier of the pattern from switching
@@ -331,10 +331,7 @@ values are not representable in UTF-16.
 The following negative error codes are given for invalid UTF-8 strings:
 
 [.errors]
-const:PCRE2_ERROR_UTF8_ERR1::
-const:PCRE2_ERROR_UTF8_ERR2::
-const:PCRE2_ERROR_UTF8_ERR3::
-const:PCRE2_ERROR_UTF8_ERR4::
+const:PCRE2_ERROR_UTF8_ERR1, const:PCRE2_ERROR_UTF8_ERR2, const:PCRE2_ERROR_UTF8_ERR3, const:PCRE2_ERROR_UTF8_ERR4,
 const:PCRE2_ERROR_UTF8_ERR5::
   The string ends with a truncated UTF-8 character; the code specifies how many
   bytes are missing (1 to 5). Although RFC 3629 restricts UTF-8 characters to be
@@ -342,16 +339,13 @@ const:PCRE2_ERROR_UTF8_ERR5::
   allows for up to 6 bytes, and this is checked first; hence the possibility of
   4 or 5 missing bytes.
 
-const:PCRE2_ERROR_UTF8_ERR6::
-const:PCRE2_ERROR_UTF8_ERR7::
-const:PCRE2_ERROR_UTF8_ERR8::
-const:PCRE2_ERROR_UTF8_ERR9::
+const:PCRE2_ERROR_UTF8_ERR6, const:PCRE2_ERROR_UTF8_ERR7, const:PCRE2_ERROR_UTF8_ERR8, const:PCRE2_ERROR_UTF8_ERR9,
 const:PCRE2_ERROR_UTF8_ERR10::
   The two most significant bits of the 2nd, 3rd, 4th, 5th, or 6th byte of the
   character do not have the binary value [.c]`0b10` (that is, either the most
   significant bit is 0, or the next bit is 1).
 
-const:PCRE2_ERROR_UTF8_ERR11::
+const:PCRE2_ERROR_UTF8_ERR11,
 const:PCRE2_ERROR_UTF8_ERR12::
   A character that is valid by the RFC 2279 rules is either 5 or 6 bytes long;
   these code points are excluded by RFC 3629.
@@ -365,10 +359,7 @@ const:PCRE2_ERROR_UTF8_ERR14::
   code points are reserved by RFC 3629 for use with UTF-16, and so are excluded
   from UTF-8.
 
-const:PCRE2_ERROR_UTF8_ERR15::
-const:PCRE2_ERROR_UTF8_ERR16::
-const:PCRE2_ERROR_UTF8_ERR17::
-const:PCRE2_ERROR_UTF8_ERR18::
+const:PCRE2_ERROR_UTF8_ERR15, const:PCRE2_ERROR_UTF8_ERR16, const:PCRE2_ERROR_UTF8_ERR17, const:PCRE2_ERROR_UTF8_ERR18,
 const:PCRE2_ERROR_UTF8_ERR19::
   A 2-, 3-, 4-, 5-, or 6-byte character is "overlong", that is, it codes for a
   value that can be represented by fewer bytes, which is invalid. For example,
@@ -416,7 +407,7 @@ not by func:pcre2_dfa_match(). When const:PCRE2_MATCH_INVALID_UTF is set, it for
 const:PCRE2_UTF to be set as well. Note, however, that the pattern itself must be a
 valid UTF string.
 
-If you do not set const:PCRE2_MATCH_INVALID_UTF when calling [.c]`pcre2_compile`, and
+If you do not set const:PCRE2_MATCH_INVALID_UTF when calling func:pcre2_compile(), and
 you are not certain that your subject strings are valid UTF sequences, you
 should not make use of the JIT "fast path" function func:pcre2_jit_match()
 because it bypasses sanity checks, including the one for UTF validity. An
@@ -464,7 +455,7 @@ suitably aligned.
 
 == Author
 
-[source]
+[literal]
 ----
 Philip Hazel
 Retired from University Computing Service
